@@ -19,7 +19,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="password" value="0506"></property>
 	</bean>
 
-
 	<!-- SqlSessionFactory 객체 설정 -->
 	
 	<bean id="SqlSessionFactory"
