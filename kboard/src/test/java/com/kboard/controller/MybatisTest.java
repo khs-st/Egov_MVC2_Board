@@ -34,4 +34,5 @@ public class MybatisTest {
 			e.printStackTrace();
 		}
 	}
+	/*test성공*/
 }
