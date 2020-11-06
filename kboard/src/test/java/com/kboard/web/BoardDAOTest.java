@@ -61,7 +61,7 @@ public class BoardDAOTest {
 			logger.info("\n 게시물 등록 실패");
 		}
 	}
-	
+	//@Repository 애노테이션을 해당 패키지에 인식시키게 하기 위한 설정을 추가하여 테스트 오류 해결
 	@Test
 	public void testGetBoardContent() throws Exception {
 
