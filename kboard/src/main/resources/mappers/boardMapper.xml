@@ -3,5 +3,50 @@
     PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kboard.controller.board.boardMapper">
+<mapper namespace="com.kboard.web.board.boardMapper">
+
+	<!-- 게시글 목록 불러오기 -->
+	<select id="getBoardList"
+		resultType="com.kboard.web.board.model.BoardVO">
+		SELECT NUM, SUBJECT, CONTENT, HIT, WDATE, UDATE,
+		DDATE FROM
+		KBOARD
+	</select>
+
+	<!-- 게시글 내용 조회 -->
+	<select id="getBoardContent"
+		resultType="com.kboard.web.board.model.BoardVO"
+		parameterType="com.kboard.web.board.model.BoardVO">
+		SELECT NUM, SUBJECT, CONTENT, HIT, WDATE, UDATE, DDATE
+		FROM KBOARD
+		WHERE NUM=#{num}
+	</select>
+
+	<!-- 글 삽입 -->
+	<insert id="insertBoard"
+		parameterType="com.kboard.web.board.model.BoardVO">
+		INSERT INTO KBOARD(SUBJECT, CONTENT, HIT, WDATE)
+		VALUES(#{subject},
+		#{content},0,now())
+	</insert>
+
+	<!-- 글 수정 -->
+	<update id="updateBoard"
+		parameterType="com.kboard.web.board.model.BoardVO">
+		UPDATE KBOARD SET SUBJECT=#{subject},
+		CONTENT=#{content}, UDATE=now() WHERE
+		NUM=${num}
+	</update>
+
+	<!-- 글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM KBOARD WHERE
+		NUM=#{num}
+	</delete>
+
+	<!-- 조회수 갱신 -->
+	<update id="updateHit"
+		parameterType="com.kboard.web.board.model.BoardVO">
+		UPDATE KBOARD HIT=HIT+1 WHERE NUM=#{num}
+	</update>
 </mapper>

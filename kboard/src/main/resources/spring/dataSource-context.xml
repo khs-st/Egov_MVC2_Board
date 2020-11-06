@@ -2,13 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="
-http://mybatis.org/schema/mybatis-spring 
-http://mybatis.org/schema/mybatis-spring.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
 
 	<!--dataSource 객체 설정 -->
-	
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -20,7 +22,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	</bean>
 
 	<!-- SqlSessionFactory 객체 설정 -->
-	
+
 	<bean id="SqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -36,4 +38,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<constructor-arg name="sqlSessionFactory"
 			ref="SqlSessionFactory" />
 	</bean>
+	<!-- @Repository 애노테이션을 해당 패키지에 인식시키게 하기 위한 설정을 추가함 -->
+	<context:component-scan
+		base-package="com.kboard.web.board.dao"></context:component-scan>
+	<context:component-scan
+		base-package="com.kboard.web.board.service"></context:component-scan>
 </beans>

@@ -1,4 +1,4 @@
-package com.kboard.controller;
+package com.kboard.web;
 
 import javax.inject.Inject;
 
