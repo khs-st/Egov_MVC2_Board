@@ -16,7 +16,7 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/kboard?useSSL=false&amp;serverTimezone=Asia/Seoul" />
+			value="jdbc:mysql://localhost:3557/kboard?useSSL=false&amp;serverTimezone=Asia/Seoul" />
 		<property name="username" value="kobalja"></property>
 		<property name="password" value="0506"></property>
 	</bean>
