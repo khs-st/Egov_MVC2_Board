@@ -29,7 +29,7 @@ public class MysqlConnectionTest {
 	@Test
 	public void testConnection() {
 		try (Connection con = ds.getConnection()) {
-			logger.info("\n MySQL 연결 : " + con);
+			logger.info("\n MySQL  연결 : " + con);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
